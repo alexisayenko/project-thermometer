@@ -80,8 +80,12 @@ compliance, attribution) live in
 [`../business/compliance.md`](../business/compliance.md), not here.
 
 - **Deliberately minimal, personal aesthetic project — not a
-  utility with growth ambitions.** No settings, history, forecast
-  list, city search, accounts, or monetization.
+  utility with growth ambitions.** No settings *screen* or
+  navigation, no history, forecast list, city search, accounts, or
+  monetization. This is distinct from "no user-adjustable state at
+  all": one persisted choice exists (thermometer visual style, see
+  [`features/style-choose.md`](features/style-choose.md)), made
+  inline on the single screen with no dedicated settings page.
 - **Single current location only**, from `CoreLocation`. No
   manual location override yet — planned for a future settings
   layer (not built).

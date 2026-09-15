@@ -10,6 +10,11 @@ events accumulate enough to warrant their own pages — see
 
 ## Events
 
+- **2026-09-15** — Thermometer visual style picker shipped: users
+  can switch between six visual styles — Classic, Garden, Galileo,
+  Retro, Dial, and USSR — via a tap row on the single screen,
+  persisted across launches. See
+  [`product/features/style-choose.md`](product/features/style-choose.md).
 - **2026-09-15** — MVP thermometer built and verified in
   Simulator — SwiftUI app (`ios/`) builds clean for iOS Simulator
   (`xcodebuild ... -sdk iphonesimulator build`) and was manually

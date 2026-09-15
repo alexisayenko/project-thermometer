@@ -8,11 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		0295939812E773FBAB20058E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8233BFB366A7E8923EEFC7 /* ContentView.swift */; };
+		135A3B47ECD4A67C6CCF3877 /* TemperatureColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4E9D9F71E2AFC7487E4257 /* TemperatureColor.swift */; };
+		14C7B3E442C8BEB8451F51E8 /* RetroUSSRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BCB5355425F729C3C6BBA7 /* RetroUSSRView.swift */; };
+		2FA00F7F4704008FCEB8801D /* RetroDigitalReadoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21A067F46272DF0D7098674 /* RetroDigitalReadoutView.swift */; };
 		400B5B36F76BDD570C8DD8DB /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA531CC98DD574DD41D3222 /* WeatherService.swift */; };
+		5D66B57D69A0B2DDA2D23176 /* ThermometerVisualStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737F9F7F1322E78AC6EE6C1E /* ThermometerVisualStyle.swift */; };
 		7FAB0E5B311E3CEB4FEF9041 /* ThermometerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DF029D3F335F1E6C93A373 /* ThermometerView.swift */; };
 		99B131F503CC657175176B93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4E60BB203372A191D1CF416 /* Assets.xcassets */; };
+		A8BA52B2E43970BDF2761443 /* DialGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876C0D96409098D73DCC2E57 /* DialGaugeView.swift */; };
 		B073F24ACA82697313DDB5D3 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CC06E740F689BB6323A381 /* LocationManager.swift */; };
+		BADB2AC76EFC99C91E10C267 /* GalileoColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A0F9A71721A703F07A7ED6 /* GalileoColumnView.swift */; };
+		C8B4512186EC3DB82E34B78B /* LiquidColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F775254868D42650419C89D4 /* LiquidColumnView.swift */; };
 		C9C5D16B5A6DD87BDDB8067E /* ThermometerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B17A0719947E91E69E2BBE6 /* ThermometerApp.swift */; };
+		CCAF5F188EE61875A18E8601 /* OrnamentalGardenTubeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96949225499373811B462BE /* OrnamentalGardenTubeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,9 +28,17 @@
 		0B8233BFB366A7E8923EEFC7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3B17A0719947E91E69E2BBE6 /* ThermometerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermometerApp.swift; sourceTree = "<group>"; };
 		5AA531CC98DD574DD41D3222 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		737F9F7F1322E78AC6EE6C1E /* ThermometerVisualStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermometerVisualStyle.swift; sourceTree = "<group>"; };
+		85BCB5355425F729C3C6BBA7 /* RetroUSSRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroUSSRView.swift; sourceTree = "<group>"; };
+		86A0F9A71721A703F07A7ED6 /* GalileoColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalileoColumnView.swift; sourceTree = "<group>"; };
+		876C0D96409098D73DCC2E57 /* DialGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialGaugeView.swift; sourceTree = "<group>"; };
 		98CC06E740F689BB6323A381 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		9F4E9D9F71E2AFC7487E4257 /* TemperatureColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureColor.swift; sourceTree = "<group>"; };
 		A6772CA404C2A188EEDF8E35 /* Thermometer.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Thermometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E60BB203372A191D1CF416 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C96949225499373811B462BE /* OrnamentalGardenTubeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrnamentalGardenTubeView.swift; sourceTree = "<group>"; };
+		E21A067F46272DF0D7098674 /* RetroDigitalReadoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetroDigitalReadoutView.swift; sourceTree = "<group>"; };
+		F775254868D42650419C89D4 /* LiquidColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidColumnView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -31,9 +47,17 @@
 			children = (
 				C4E60BB203372A191D1CF416 /* Assets.xcassets */,
 				0B8233BFB366A7E8923EEFC7 /* ContentView.swift */,
+				876C0D96409098D73DCC2E57 /* DialGaugeView.swift */,
+				86A0F9A71721A703F07A7ED6 /* GalileoColumnView.swift */,
+				F775254868D42650419C89D4 /* LiquidColumnView.swift */,
 				98CC06E740F689BB6323A381 /* LocationManager.swift */,
+				C96949225499373811B462BE /* OrnamentalGardenTubeView.swift */,
+				E21A067F46272DF0D7098674 /* RetroDigitalReadoutView.swift */,
+				85BCB5355425F729C3C6BBA7 /* RetroUSSRView.swift */,
+				9F4E9D9F71E2AFC7487E4257 /* TemperatureColor.swift */,
 				3B17A0719947E91E69E2BBE6 /* ThermometerApp.swift */,
 				01DF029D3F335F1E6C93A373 /* ThermometerView.swift */,
+				737F9F7F1322E78AC6EE6C1E /* ThermometerVisualStyle.swift */,
 				5AA531CC98DD574DD41D3222 /* WeatherService.swift */,
 			);
 			path = Thermometer;
@@ -123,9 +147,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				0295939812E773FBAB20058E /* ContentView.swift in Sources */,
+				A8BA52B2E43970BDF2761443 /* DialGaugeView.swift in Sources */,
+				BADB2AC76EFC99C91E10C267 /* GalileoColumnView.swift in Sources */,
+				C8B4512186EC3DB82E34B78B /* LiquidColumnView.swift in Sources */,
 				B073F24ACA82697313DDB5D3 /* LocationManager.swift in Sources */,
+				CCAF5F188EE61875A18E8601 /* OrnamentalGardenTubeView.swift in Sources */,
+				2FA00F7F4704008FCEB8801D /* RetroDigitalReadoutView.swift in Sources */,
+				14C7B3E442C8BEB8451F51E8 /* RetroUSSRView.swift in Sources */,
+				135A3B47ECD4A67C6CCF3877 /* TemperatureColor.swift in Sources */,
 				C9C5D16B5A6DD87BDDB8067E /* ThermometerApp.swift in Sources */,
 				7FAB0E5B311E3CEB4FEF9041 /* ThermometerView.swift in Sources */,
+				5D66B57D69A0B2DDA2D23176 /* ThermometerVisualStyle.swift in Sources */,
 				400B5B36F76BDD570C8DD8DB /* WeatherService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

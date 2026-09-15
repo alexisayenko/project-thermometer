@@ -12,8 +12,16 @@ struct ContentView: View {
 
     @StateObject private var locationManager = LocationManager()
     @State private var phase: Phase = .loading
+    @AppStorage("thermometerVisualStyle") private var selectedStyle: ThermometerVisualStyle = .classicGlassTube
 
     private let weatherService = WeatherService()
+
+    /// The retro digit stack is wider and shorter than the tube-shaped
+    /// styles, so it gets its own footprint — sized to claim roughly the
+    /// same vertical weight the thermometer graphic has in the other styles.
+    private var thermometerFrameSize: CGSize {
+        selectedStyle == .retroDigitalReadout ? CGSize(width: 220, height: 380) : CGSize(width: 140, height: 380)
+    }
 
     var body: some View {
         ZStack {
@@ -25,13 +33,15 @@ struct ContentView: View {
                 Spacer(minLength: 8)
 
                 thermometer
-                    .frame(width: 140, height: 380)
+                    .frame(width: thermometerFrameSize.width, height: thermometerFrameSize.height)
 
                 readout
 
                 Spacer(minLength: 8)
 
                 footer
+
+                stylePicker
             }
             .padding(.horizontal, 32)
             .padding(.vertical, 24)
@@ -71,7 +81,7 @@ struct ContentView: View {
             ThermometerView(currentTemperature: nil, scaleMin: -10, scaleMax: 30)
         case .ready(let weather):
             let range = scaleRange(low: weather.todayLow, high: weather.todayHigh)
-            ThermometerView(currentTemperature: weather.currentTemperature, scaleMin: range.min, scaleMax: range.max)
+            styledThermometer(temperature: weather.currentTemperature, scaleMin: range.min, scaleMax: range.max)
         case .permissionDenied, .error:
             ThermometerView(currentTemperature: nil, scaleMin: -10, scaleMax: 30)
                 .opacity(0.35)
@@ -79,14 +89,70 @@ struct ContentView: View {
     }
 
     @ViewBuilder
+    private func styledThermometer(temperature: Double, scaleMin: Double, scaleMax: Double) -> some View {
+        switch selectedStyle {
+        case .classicGlassTube:
+            ThermometerView(currentTemperature: temperature, scaleMin: scaleMin, scaleMax: scaleMax)
+        case .ornamentalGardenTube:
+            OrnamentalGardenTubeView(currentTemperature: temperature, scaleMin: scaleMin, scaleMax: scaleMax)
+        case .galileoColumn:
+            GalileoColumnView(currentTemperature: temperature, scaleMin: scaleMin, scaleMax: scaleMax)
+        case .retroDigitalReadout:
+            RetroDigitalReadoutView(currentTemperature: temperature, scaleMin: scaleMin, scaleMax: scaleMax)
+        case .dialGauge:
+            DialGaugeView(currentTemperature: temperature, scaleMin: scaleMin, scaleMax: scaleMax)
+        case .retroUSSR:
+            RetroUSSRView(currentTemperature: temperature, scaleMin: scaleMin, scaleMax: scaleMax)
+        }
+    }
+
+    private var stylePicker: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 4) {
+                ForEach(ThermometerVisualStyle.allCases) { style in
+                    Button {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            selectedStyle = style
+                        }
+                    } label: {
+                        VStack(spacing: 2) {
+                            Image(systemName: style.symbolName)
+                                .font(.system(size: 14, weight: .medium))
+                            Text(style.displayName)
+                                .font(.system(size: 9, weight: .medium, design: .rounded))
+                        }
+                        .foregroundStyle(selectedStyle == style ? Color.primary : Color.secondary)
+                        .padding(.vertical, 6)
+                        .padding(.horizontal, 10)
+                        .background(
+                            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                .fill(selectedStyle == style ? Color.primary.opacity(0.08) : Color.clear)
+                        )
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .padding(4)
+        }
+        .background(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .fill(Color(uiColor: .secondarySystemBackground))
+        )
+    }
+
+    @ViewBuilder
     private var readout: some View {
         switch phase {
         case .ready(let weather):
             VStack(spacing: 6) {
-                Text(formattedTemperature(weather.currentTemperature))
-                    .font(.system(size: 68, weight: .semibold, design: .rounded))
-                    .foregroundStyle(.primary)
-                    .contentTransition(.numericText())
+                // The retro digit stack IS the readout — showing the big
+                // number again here would display the temperature twice.
+                if selectedStyle != .retroDigitalReadout {
+                    Text(formattedTemperature(weather.currentTemperature))
+                        .font(.system(size: 68, weight: .semibold, design: .rounded))
+                        .foregroundStyle(.primary)
+                        .contentTransition(.numericText())
+                }
 
                 HStack(spacing: 14) {
                     Label(formattedTemperature(weather.todayHigh), systemImage: "arrow.up")

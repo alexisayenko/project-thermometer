@@ -35,6 +35,16 @@ rationale per rule so future-us can revisit.
   temperature, interpolated across five stops (`ThermometerView.swift`,
   `TemperatureColor.color(for:)`): -20°C deep blue → 0°C blue →
   15°C teal-green → 25°C amber → 35°C red.
+- This temperature ramp is still the shared base across all six
+  thermometer visual styles, but several styles layer their own
+  fixed chrome colors on top, not temperature-driven: Garden's
+  copper/bronze frame (`OrnamentalGardenTubeView.swift`), Retro's
+  amber Nixie-style glow (`RetroDigitalReadoutView.swift`), and
+  USSR's wood-grain housing + phosphor-green dot matrix
+  (`RetroUSSRView.swift`). Galileo and Dial still derive their
+  coloring from `TemperatureColor.color(for:)` — Galileo per
+  calibrated sphere (`GalileoColumnView.swift`), Dial across the
+  arc/needle (`DialGaugeView.swift`).
 
 ### Typography
 
@@ -54,8 +64,16 @@ rationale per rule so future-us can revisit.
 
 ### Interaction
 
-- Not yet decided beyond OS defaults — single-screen app, no
-  navigation/interaction patterns exist yet.
+- Style switching is the one interaction pattern so far: a
+  horizontal row of tappable style icons below the readout
+  (`ContentView.swift`, `stylePicker`). Tapping selects a style
+  with `.easeInOut(duration: 0.2)`; the choice persists across
+  launches via `@AppStorage("thermometerVisualStyle")`. This
+  introduces no push/modal navigation — the app stays
+  single-screen. The picker only swaps the visual during the
+  data-loaded `.ready` phase; loading/permission-denied/error
+  states always render the classic glass tube regardless of the
+  stored selection.
 
 ### Voice & copy
 
@@ -64,6 +82,7 @@ rationale per rule so future-us can revisit.
 
 ## Open questions
 
-- Phase 2: a settings layer (location override, thermometer
-  visual style picker, terrain backdrop picker) — not designed
-  yet.
+- Phase 2: a settings layer (location override, terrain backdrop
+  picker) — not designed yet. Thermometer visual style picker
+  shipped inline instead (see [Interaction](#interaction)),
+  without introducing a settings layer.

@@ -21,9 +21,12 @@ animated glass thermometer: liquid rises to the current reading
 with a spring animation, colored on a continuous
 blue → teal → amber → red gradient by temperature, with a glow
 pulse and rising bubbles for a "living" feel, plus a numeric
-readout, today's date, and today's high/low. No monetization —
-it's a personal aesthetic project, not a product with growth
-ambitions.
+readout, today's date, and today's high/low. A tap row below the
+readout lets the user switch the thermometer's visual style —
+Classic, Garden, Galileo, Retro, Dial, and USSR — with the choice
+persisted across launches; still one screen, no settings
+navigation. No monetization — it's a personal aesthetic project,
+not a product with growth ambitions.
 
 ## Tech stack
 
