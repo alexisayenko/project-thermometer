@@ -10,5 +10,8 @@ events accumulate enough to warrant their own pages — see
 
 ## Events
 
-- [TODO: YYYY-MM-DD — event title] — [TODO: one-line summary;
-  link to artifact, post, or release if applicable].
+- **2026-09-15** — MVP thermometer built and verified in
+  Simulator — SwiftUI app (`ios/`) builds clean for iOS Simulator
+  (`xcodebuild ... -sdk iphonesimulator build`) and was manually
+  verified running with live Open-Meteo weather data. Not yet run
+  on a physical device.

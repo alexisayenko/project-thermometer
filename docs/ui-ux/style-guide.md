@@ -29,35 +29,41 @@ rationale per rule so future-us can revisit.
 
 ### Color
 
-- [TODO: e.g. red = destructive (delete, irreversible). Used
-  for destructive confirmations only.]
-- [TODO: accent color use cases — call-to-action, success
-  state, brand surfaces.]
+- The liquid fill color *is* the color system — there's no
+  separate accent/destructive palette; single screen, no
+  destructive actions exist. It's driven entirely by current
+  temperature, interpolated across five stops (`ThermometerView.swift`,
+  `TemperatureColor.color(for:)`): -20°C deep blue → 0°C blue →
+  15°C teal-green → 25°C amber → 35°C red.
 
 ### Typography
 
-- [TODO: type scale — base size, line-height, weight ladder.]
-- [TODO: typeface pairing — display + body + mono.]
+- Not yet decided beyond OS defaults — single-screen app, no
+  navigation/interaction patterns exist yet.
 
 ### Motion
 
-- [TODO: standard durations — e.g. fast 150ms, default 250ms,
-  slow 400ms.]
-- [TODO: easing curves and when each is used.]
+- Liquid fill: `spring(response: 1.15, dampingFraction: 0.78)`
+  on temperature change.
+- Glow pulse: `easeInOut(duration: 1.8).repeatForever(autoreverses: true)`.
+- Rising bubbles: a `linear(duration: 2.4).repeatForever(autoreverses: false)`
+  loop drives spawn timing; each bubble rises on its own
+  `easeInOut(duration: bubble.duration)`.
+- These are literal values inline in `ThermometerView.swift` — no
+  shared duration constants defined yet.
 
 ### Interaction
 
-- [TODO: popup dismissal — backdrop tap, swipe-down, both.]
-- [TODO: tab placement — bottom (mobile), top (web), neither.]
-- [TODO: gesture conventions — long-press, swipe-to-delete.]
+- Not yet decided beyond OS defaults — single-screen app, no
+  navigation/interaction patterns exist yet.
 
 ### Voice & copy
 
-- [TODO: tone — friendly / neutral / formal.]
-- [TODO: capitalization in titles — sentence case / title case.]
-- [TODO: error message conventions — user-actionable, no
-  blame.]
+- Not yet decided beyond OS defaults — single-screen app, no
+  navigation/interaction patterns exist yet.
 
 ## Open questions
 
-- [TODO: open style decisions awaiting resolution.]
+- Phase 2: a settings layer (location override, thermometer
+  visual style picker, terrain backdrop picker) — not designed
+  yet.

@@ -9,34 +9,35 @@ work-area axes (C1, C2, …), see [`../concerns.md`](../concerns.md).
 
 ## Audience
 
-[TODO: who this product is for. Primary audience explicitly; any
-groups who are incidental / not designed for.]
+Personal project, single user (the author). Not designed for
+anyone else.
 
 ## Scope (v1)
 
-[TODO: what's in v1 — concrete numbers / boundaries where they
-exist. What's deliberately deferred to v2+.]
+One screen: today's current temperature + today's high/low,
+shown as one animated glass thermometer, current location only
+(via `CoreLocation`). Nothing else — see
+[Non-goals](#non-goals-v1). A settings layer (location override,
+visual style, terrain backdrop) is deferred to v2+.
 
 ## Monetization
 
-- **Model**: [TODO: one-time purchase / subscription / freemium
-  / ad-supported / donation / none.]
-- **Free tier**: [TODO: what's in the free tier — or "n/a".]
-- **Paid tier**: [TODO: what gates the paid tier — features,
-  capacity, support — or "n/a".]
-- **Price**: [TODO: price point + currency, or "TBD pending
-  market research".]
+- **Model**: none — not monetized.
+- **Free tier**: n/a.
+- **Paid tier**: n/a.
+- **Price**: n/a.
 
 ## Non-goals (v1)
 
 Things deliberately out of scope. Each line defends an absence.
 
-- [TODO: e.g. "no subscriptions / recurring revenue".]
-- [TODO: e.g. "no community features (comments, ratings, UGC)".]
+- No settings, history, forecast list, city search, or accounts.
+- No monetization, analytics, or backend/server component.
 
 ## Open questions
 
-- [TODO: open business decisions awaiting resolution.]
+- None right now — no business decisions pending for a personal
+  project.
 
 ## Resolved
 
@@ -44,8 +45,9 @@ Historical decisions with dates — load-bearing for understanding
 why the current shape is what it is. Don't delete; the trail is
 the audit.
 
-- **[TODO: decision title]** ([TODO: YYYY-MM-DD]):
-  [TODO: what was decided and why.]
+- No formal decision log kept yet — decisions so far are captured
+  in [`../../CLAUDE.md`](../../CLAUDE.md) and
+  [`../product/README.md`](../product/README.md) instead.
 
 ## File layout
 

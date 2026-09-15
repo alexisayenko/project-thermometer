@@ -16,14 +16,9 @@ is built from.
 Don't pre-create — extract on first real entry. See
 [Section, file, folder](../README.md#section-file-folder).
 
-- **`[TODO: top-level subject — e.g. paintings.md, garments.md]`**
-  — the primary corpus.
-- **`sources.md`** — bibliography / canonical sources for factual
-  claims (with licensing notes per source).
-- **`prompts/`** — prompt sources for AI-assisted content
-  generation.
-- **`motifs.md`** / **`themes.md`** / **`taxonomy.md`** —
-  categorizations and groupings.
+N/A for this project — there's no source corpus. Temperature and
+forecast data come live from the Open-Meteo API at request time;
+nothing is curated, stored, or bundled as editorial content.
 
 For per-product domain nouns, see
 [`../product/concepts/`](../product/concepts/) — those are
@@ -33,4 +28,4 @@ For doc-meta vocabulary (Section, Concern, …), see
 
 ## Open questions
 
-- [TODO: open editorial decisions awaiting resolution.]
+- None — no content/editorial plane for this project.

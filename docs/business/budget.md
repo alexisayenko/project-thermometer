@@ -11,8 +11,8 @@ One-time costs. Add a row per receipt as it lands.
 | Date | Vendor | Item | Amount | Receipt |
 | --- | --- | --- | --- | --- |
 
-**Totals to date**: [TODO: sum + currency once expenses land,
-optional FX note if mixing currencies].
+**Totals to date**: $0 — nothing spent yet. The stack is entirely
+free (Open-Meteo, CoreLocation); no paid services or accounts.
 
 ## Recurring obligations
 
@@ -25,6 +25,4 @@ each cycle renews.
 
 ## Notes
 
-- [TODO: anything notable about pricing — promotional rates vs
-  list, FX assumptions, auto-renew settings, vendor
-  consolidation plans. Populate as expenses appear.]
+- N/A — no expenses yet to annotate.

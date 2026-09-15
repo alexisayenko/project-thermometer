@@ -1,7 +1,9 @@
 # Brand
 
-[TODO: 1-2 sentences — what state the brand identity is in
-(taking shape / locked / evolving), and the high-level direction.]
+Brand identity hasn't been defined — this is a personal hobby
+project. The product name is simply "Thermometer" (bundle id
+`com.isayenko.thermometer`); no logo, palette, or mark chosen
+yet.
 
 Folder-specific applications (favicon, web splash, social cards,
 app icons, store screenshots) are derived from the mark and
@@ -29,18 +31,22 @@ owns identity / spirit; the style guide operationalizes it.
 
 ## Current state
 
-- **Name**: [TODO: working / locked + the name + rationale.]
-- **Visual direction**: [TODO: 1-2 lines — minimal, ornate,
-  themed-after-something, etc.]
-  - **Palette**: [TODO: list of colors / hex values, or
-    references to source material.]
-  - **Texture**: [TODO: flat vector / brushstroke / hand-drawn.]
-  - **Typography**: [TODO: serif / sans / mono / handwritten +
-    any specific typefaces in use.]
-  - **Mark**: [TODO: pictorial / abstract / letterform direction.]
-- **Domain**: [TODO: registered domains + provider + dates +
-  which is primary vs defensive.]
-- **Wordmark / logo**: [TODO: TBD or describe the lockup.]
+- **Name**: Locked — "Thermometer". Plain and literal, matching
+  the single-purpose scope; never a contest between candidates.
+- **Visual direction**: Not decided beyond the in-app temperature
+  gradient (see
+  [`../ui-ux/style-guide.md`](../ui-ux/style-guide.md)).
+  - **Palette**: N/A — no dedicated brand palette; the
+    temperature-color gradient is the only color system so far.
+  - **Texture**: N/A — not decided.
+  - **Typography**: N/A — system font (SF), no custom typeface
+    chosen.
+  - **Mark**: N/A — no app icon/mark designed yet;
+    `Assets.xcassets/AppIcon.appiconset` is an empty XcodeGen
+    placeholder with no images.
+- **Domain**: N/A — no domain registered (native app, no web
+  presence).
+- **Wordmark / logo**: TBD — no logo designed.
 
 ## Where applications live
 
@@ -49,9 +55,7 @@ Per-folder applications live with their code.
 
 | Where it appears | Location |
 | --- | --- |
-| [TODO: e.g. Web favicon] | [TODO: e.g. `web/public/favicon.svg`] |
-| [TODO: e.g. Open Graph / social cards] | [TODO: `web/public/`] |
-| [TODO: e.g. iOS app icon] | [TODO: `mobile/…` or remove if N/A] |
+| None yet | No visual applications designed (see Current state) |
 
 ## Names considered
 
@@ -59,9 +63,10 @@ Optional. Useful when the name is still in motion.
 
 | Name | Verdict |
 | --- | --- |
-| [TODO: candidate 1] | [TODO: chosen / passed because…] |
+| N/A | "Thermometer" was chosen directly, never revisited |
 
 ## Open questions
 
-- [TODO: open decisions about mark, typeface, name lock-in,
-  domains.]
+- App icon / mark — not designed yet.
+- No domain or brand palette beyond the in-app temperature
+  gradient.

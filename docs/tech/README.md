@@ -21,4 +21,8 @@ Don't pre-create — extract on first real entry. See
 
 ## Open questions
 
-- [TODO: architectural decisions still open.]
+- Physical-device signing/distribution — not yet set up; needs
+  the user's own Apple ID / signing team in Xcode.
+- Phase-2 nature-background images (terrain × climate/season ×
+  time-of-day) — sourcing (e.g. AI image generation) and bundling
+  approach not yet decided.

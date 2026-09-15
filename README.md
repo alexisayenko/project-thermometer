@@ -6,26 +6,29 @@ runtime dependency.
 
 ## Overview
 
-This template assumes **one product, delivered through one or
-more top-level code folders** at the repo root. Each folder is a
-deployment target — name it by what it is (`mobile/`, `web/`,
-`workers/`, `marketing-site/`, etc.). Avoid generic names like
-`app/` that don't say which one.
-
-Multi-product is rare; see
-[`docs/README.md`](docs/README.md#multi-product-split) for the
-split path if/when it happens.
+Thermometer is a single-screen SwiftUI iOS app that shows today's
+real outdoor temperature as one beautiful animated glass
+thermometer — liquid fill with a spring animation, a continuous
+blue → teal → amber → red color gradient by temperature, a glow
+pulse and rising bubbles, plus a numeric readout, today's date,
+and today's high/low. It's a personal aesthetic project,
+deliberately minimal: no settings, history, forecast list, city
+search, accounts, or monetization.
 
 ## Quick start
 
-1. Click **Use this template** on GitHub (or `git clone` and
-   remove `.git/` to start fresh).
-2. Replace this Overview and Quick start with content for the
-   new project.
-3. Keep the [Structure](#structure) section — that's the
-   canonical convention.
-4. Fill in [`docs/README.md`](docs/README.md) with the project's
-   product and docs subtree.
+1. Open [`ios/Thermometer.xcodeproj`](ios/Thermometer.xcodeproj)
+   in Xcode — it's tracked in the repo, so no generation step is
+   needed to open it.
+2. If you edit [`ios/project.yml`](ios/project.yml) (or the
+   `.xcodeproj` is ever missing), regenerate it with
+   `xcodegen generate` from `ios/`.
+3. Build & run: pick a simulator and hit Run in Xcode, or from
+   the command line:
+   `xcodebuild -project ios/Thermometer.xcodeproj -scheme Thermometer -sdk iphonesimulator build`.
+   Live weather data needs location permission (when-in-use) and
+   network access. Running on a physical device needs your own
+   Apple ID / signing team configured in Xcode.
 
 ## Structure
 

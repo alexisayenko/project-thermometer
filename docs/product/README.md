@@ -1,10 +1,16 @@
 # Product
 
-[TODO: one paragraph — the product's core idea, the mechanic, the
-value to the user. State the load-bearing tension in plain terms.]
+Thermometer shows today's real outdoor temperature as a single
+beautiful animated glass thermometer — liquid rises to the
+current reading with a spring animation, colored on a continuous
+blue → teal → amber → red gradient by temperature, with a glow
+pulse and rising bubbles for a "living" feel. The value is
+purely aesthetic: a small daily ritual of checking the weather,
+not a utility for planning around it — that tension (delight over
+feature count) governs every scope decision.
 
-[TODO: one line — purpose. What this product enables that wasn't
-possible (or wasn't easy) before.]
+It replaces the reflex of opening a cluttered weather app just to
+see one number with something calmer and nicer to look at.
 
 For the wider docs/ map and what-lives-where, see
 [`../README.md`](../README.md).
@@ -73,7 +79,9 @@ technically could. Externally-imposed obligations (licensing,
 compliance, attribution) live in
 [`../business/compliance.md`](../business/compliance.md), not here.
 
-- **[TODO: load-bearing constraint — e.g. "free X, paid Y", "no
-  live data", "single-user only" — the tension that shapes
-  feature scope]**
-- **[TODO: secondary constraint, or remove this bullet if none]**
+- **Deliberately minimal, personal aesthetic project — not a
+  utility with growth ambitions.** No settings, history, forecast
+  list, city search, accounts, or monetization.
+- **Single current location only**, from `CoreLocation`. No
+  manual location override yet — planned for a future settings
+  layer (not built).

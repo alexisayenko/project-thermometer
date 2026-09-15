@@ -6,17 +6,19 @@ regardless of what we'd prefer. Self-imposed product limits live
 as *constraints* inside the section they apply to — see
 [`../product/README.md#constraints`](../product/README.md#constraints).
 
-## [TODO: section per obligation class]
+## Platform policy — location permission
 
-Group obligations by source — e.g. *Image licensing*, *Data
-protection*, *App store policy*, *Tax & invoicing*. For each:
-
-- What the rule is.
-- Where it comes from (license terms, regulation, platform
-  policy).
-- How the project complies — concrete actions, not aspirations.
+- What the rule is: iOS requires a user-facing purpose string for
+  `CoreLocation` "when-in-use" access.
+- Where it comes from: Apple App Store Review Guidelines / iOS
+  privacy requirements (`NSLocationWhenInUseUsageDescription`).
+- How the project complies: usage description already set in
+  `ios/project.yml` ("Used to show today's temperature where you
+  are."), flows into the generated Info.plist.
 
 ## Other obligations (open)
 
-- [TODO: open compliance questions — refund policy, ToS &
-  privacy, geographic availability, etc.]
+- App Store distribution terms — not yet applicable, the app has
+  only run in Simulator and isn't submitted anywhere.
+- Open-Meteo API terms of use — confirm attribution / rate-limit
+  requirements before any distribution wider than personal use.
