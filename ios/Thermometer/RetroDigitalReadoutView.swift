@@ -1,61 +1,67 @@
 import SwiftUI
 
-/// Style 4: Retro Digital Readout. A glowing Nixie-tube/VFD-style numeral
-/// readout — warm amber glow behind monospaced digits, a faint glass-tube
-/// outline behind the stack, and a slow, subtle flicker. No liquid, no
-/// needle.
+/// Style 4: Retro Digital Readout. Phase 3: renders the live temperature as
+/// a row of individual Nixie-tube photos (one glass tube per digit, plus a
+/// minus tube when negative) followed by a small metal-faceplate °C unit
+/// tile, instead of a single static decorative photo. Digit count is
+/// derived from the value, so it scales from a bare single digit up through
+/// a signed two-digit reading without any hardcoded slot count.
 struct RetroDigitalReadoutView: View {
     let currentTemperature: Double
     let scaleMin: Double
     let scaleMax: Double
 
-    @State private var flickerOpacity: Double = 1.0
+    /// All tube photos (digits and minus) share the same framing/composition
+    /// at 1024x1536, so one aspect ratio describes every tube.
+    private static let tubeAspectRatio: CGFloat = 1024.0 / 1536.0
+    private static let tubeSpacingFraction: CGFloat = 0.06
 
-    private let amberColor = Color(red: 1.0, green: 0.62, blue: 0.15)
-    private let flickerTimer = Timer.publish(every: 0.22, on: .main, in: .common).autoconnect()
+    /// Ordered glyphs for the readout, e.g. -12 -> ["-", "1", "2"]. Rounds
+    /// to the nearest whole degree to match the shared numeric readout in
+    /// ContentView (`Int(value.rounded())`).
+    private var digitGlyphs: [String] {
+        let rounded = Int(currentTemperature.rounded())
+        var glyphs = String(abs(rounded)).map { String($0) }
+        if rounded < 0 {
+            glyphs.insert("-", at: 0)
+        }
+        return glyphs
+    }
+
+    private func imageName(for glyph: String) -> String {
+        glyph == "-" ? "NixieMinus" : "NixieDigit\(glyph)"
+    }
 
     var body: some View {
         GeometryReader { geometry in
-            let width = geometry.size.width
-            let height = geometry.size.height
-            // Target size is height-driven so the readout claims the same
-            // vertical real estate as the other styles' thermometer graphic;
-            // minimumScaleFactor lets it shrink to fit width for wider
-            // strings (e.g. negative temperatures) without clipping.
-            let digitSize = height * 0.42
+            let glyphs = digitGlyphs
+            let tubeCount = CGFloat(glyphs.count)
+            let spacingFraction = tubeCount > 1 ? Self.tubeSpacingFraction : 0
+            let rowAspect = tubeCount * Self.tubeAspectRatio + max(tubeCount - 1, 0) * spacingFraction
 
-            ZStack {
-                RoundedRectangle(cornerRadius: width * 0.12, style: .continuous)
-                    .fill(amberColor.opacity(0.05))
-                    .frame(width: width * 0.96, height: height * 0.9)
-                    .position(x: width / 2, y: height / 2)
+            let tubeHeight = rowAspect > 0
+                ? min(geometry.size.height, geometry.size.width / rowAspect)
+                : 0
+            let tubeWidth = tubeHeight * Self.tubeAspectRatio
+            let spacing = tubeHeight * spacingFraction
 
-                RoundedRectangle(cornerRadius: width * 0.12, style: .continuous)
-                    .stroke(Color.white.opacity(0.10), lineWidth: 1.5)
-                    .frame(width: width * 0.96, height: height * 0.9)
-                    .position(x: width / 2, y: height / 2)
-
-                Text(digitString)
-                    .font(.system(size: digitSize, weight: .semibold, design: .monospaced))
-                    .minimumScaleFactor(0.3)
-                    .lineLimit(1)
-                    .foregroundStyle(amberColor)
-                    .shadow(color: amberColor.opacity(0.85), radius: 10)
-                    .shadow(color: amberColor.opacity(0.55), radius: 26)
-                    .opacity(flickerOpacity)
-                    .frame(width: width * 0.86)
-                    .position(x: width / 2, y: height / 2)
+            HStack(spacing: spacing) {
+                ForEach(Array(glyphs.enumerated()), id: \.offset) { _, glyph in
+                    Image(imageName(for: glyph))
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: tubeWidth, height: tubeHeight)
+                }
             }
-            .frame(width: width, height: height)
-        }
-        .onReceive(flickerTimer) { _ in
-            withAnimation(.easeInOut(duration: 0.15)) {
-                flickerOpacity = Double.random(in: 0.86...1.0)
+            .overlay(alignment: .bottomTrailing) {
+                Image("NixieUnitC")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: tubeHeight * 0.32)
+                    .padding(.trailing, tubeWidth * 0.04)
+                    .padding(.bottom, tubeHeight * 0.02)
             }
+            .frame(width: geometry.size.width, height: geometry.size.height)
         }
-    }
-
-    private var digitString: String {
-        "\(Int(currentTemperature.rounded()))°"
     }
 }

@@ -35,16 +35,18 @@ rationale per rule so future-us can revisit.
   temperature, interpolated across five stops (`ThermometerView.swift`,
   `TemperatureColor.color(for:)`): -20°C deep blue → 0°C blue →
   15°C teal-green → 25°C amber → 35°C red.
-- This temperature ramp is still the shared base across all six
-  thermometer visual styles, but several styles layer their own
-  fixed chrome colors on top, not temperature-driven: Garden's
-  copper/bronze frame (`OrnamentalGardenTubeView.swift`), Retro's
-  amber Nixie-style glow (`RetroDigitalReadoutView.swift`), and
-  USSR's wood-grain housing + phosphor-green dot matrix
-  (`RetroUSSRView.swift`). Galileo and Dial still derive their
-  coloring from `TemperatureColor.color(for:)` — Galileo per
-  calibrated sphere (`GalileoColumnView.swift`), Dial across the
-  arc/needle (`DialGaugeView.swift`).
+- As of 2026-09-15 this is no longer true in practice: all six
+  thermometer visual styles now render a fixed photoreal reference
+  image (`ThermometerView.swift`, `OrnamentalGardenTubeView.swift`,
+  `GalileoColumnView.swift`, `DialGaugeView.swift`,
+  `RetroUSSRView.swift`, `RetroDigitalReadoutView.swift`) — none of
+  them derive color from the live temperature any more, including
+  Galileo and Dial. `TemperatureColor.color(for:)` and the
+  procedural `LiquidColumnView.swift` that used it still exist in
+  the codebase but aren't wired into any current style; they're
+  vestigial from before the photo-backed art landed. The live
+  numeric readout text uses standard `.primary`/`.secondary`
+  styling, not the temperature ramp.
 
 ### Typography
 
@@ -53,27 +55,42 @@ rationale per rule so future-us can revisit.
 
 ### Motion
 
+- As of 2026-09-15 the animated liquid fill, glow pulse, and rising
+  bubbles described below are not visible in the shipped app: all
+  six thermometer visual styles render a static photo (see
+  [Color](#color)). The mechanism still exists in
+  `LiquidColumnView.swift`, but that view isn't wired into any
+  current style — kept here as a record of what it does in case it
+  gets reused.
 - Liquid fill: `spring(response: 1.15, dampingFraction: 0.78)`
   on temperature change.
 - Glow pulse: `easeInOut(duration: 1.8).repeatForever(autoreverses: true)`.
 - Rising bubbles: a `linear(duration: 2.4).repeatForever(autoreverses: false)`
   loop drives spawn timing; each bubble rises on its own
   `easeInOut(duration: bubble.duration)`.
-- These are literal values inline in `ThermometerView.swift` — no
+- These are literal values inline in `LiquidColumnView.swift` — no
   shared duration constants defined yet.
 
 ### Interaction
 
-- Style switching is the one interaction pattern so far: a
-  horizontal row of tappable style icons below the readout
-  (`ContentView.swift`, `stylePicker`). Tapping selects a style
+- Style switching: a horizontal row of tappable style icons below
+  the readout (`ContentView.swift`, `stylePicker`), or swiping
+  left/right anywhere on the thermometer graphic itself
+  (`styleSwipeGesture`, wraps at the ends). Both select a style
   with `.easeInOut(duration: 0.2)`; the choice persists across
-  launches via `@AppStorage("thermometerVisualStyle")`. This
-  introduces no push/modal navigation — the app stays
-  single-screen. The picker only swaps the visual during the
-  data-loaded `.ready` phase; loading/permission-denied/error
-  states always render the classic glass tube regardless of the
-  stored selection.
+  launches via `@AppStorage("thermometerVisualStyle")`. The
+  picker/swipe only swap the visual during the data-loaded
+  `.ready` phase; loading/permission-denied/error states always
+  render the classic glass tube regardless of the stored
+  selection.
+- Hide chrome: an eye / eye-slash icon button (top-right) toggles
+  hiding the header, numeric readout, and style picker together,
+  animated with `.easeInOut(duration: 0.3)`; the thermometer
+  graphic expands to fill most of the screen in their place. The
+  choice persists via `@AppStorage("isTextHidden")`. See
+  [`../product/features/chrome-hide.md`](../product/features/chrome-hide.md).
+- Neither pattern introduces push/modal navigation — the app stays
+  single-screen.
 
 ### Voice & copy
 

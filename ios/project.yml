@@ -27,6 +27,9 @@ targets:
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false
         NSLocationWhenInUseUsageDescription: "Used to show today's temperature where you are."
+        CFBundleDisplayName: "Thermo — Daily Ritual"
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.isayenko.thermometer
@@ -35,6 +38,9 @@ targets:
         SWIFT_EMIT_LOC_STRINGS: YES
         MARKETING_VERSION: "1.0"
         CURRENT_PROJECT_VERSION: "1"
+        DEVELOPMENT_TEAM: L8C7TUQLBM
+        CODE_SIGN_STYLE: Automatic
+        TARGETED_DEVICE_FAMILY: "1"
     scheme:
       testTargets: []
       gatherCoverageData: false

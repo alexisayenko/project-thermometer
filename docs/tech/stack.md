@@ -21,3 +21,21 @@ The v1 stack, with rationale per pick. See
   client. Nothing to host, deploy, or pay for; matches the
   single-user, no-accounts scope in
   [`../product/README.md#constraints`](../product/README.md#constraints).
+- **Art pipeline** — each thermometer style's reference image is
+  produced externally (sketch/brief → GPT-generated static photo),
+  then hand-integrated as an `Assets.xcassets` imageset and wired
+  in via `Image("...Photo").resizable().aspectRatio(.fit)`. Retro
+  is the exception: instead of one photo it uses twelve individual
+  Nixie-tube glyph photos (`NixieDigit0`–`9`, `NixieMinus`,
+  `NixieUnitC`), composited live in
+  `RetroDigitalReadoutView.swift` to show the actual current
+  temperature digit-by-digit. See
+  [`../product/features/style-choose.md#art`](../product/features/style-choose.md#art).
+- **Distribution** — signing config lives in `project.yml`
+  (`DEVELOPMENT_TEAM`, `CODE_SIGN_STYLE: Automatic`), managed by
+  XcodeGen like the rest of the project. The archive itself is a
+  local `xcodebuild archive`; the TestFlight upload goes through
+  Xcode's Organizer (Distribute App → TestFlight & App Store),
+  since that step needs interactive Apple ID/2FA. As of
+  2026-09-15: v1.0 (build 1) shipped to internal TestFlight
+  testing.

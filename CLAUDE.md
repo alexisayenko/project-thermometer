@@ -16,32 +16,37 @@ accounts, or monetization.
 ## Product
 
 Thermometer is a single-screen SwiftUI iOS app for one user (the
-author). It shows today's real outdoor temperature as one
-animated glass thermometer: liquid rises to the current reading
-with a spring animation, colored on a continuous
-blue → teal → amber → red gradient by temperature, with a glow
-pulse and rising bubbles for a "living" feel, plus a numeric
-readout, today's date, and today's high/low. A tap row below the
-readout lets the user switch the thermometer's visual style —
-Classic, Garden, Galileo, Retro, Dial, and USSR — with the choice
-persisted across launches; still one screen, no settings
-navigation. No monetization — it's a personal aesthetic project,
-not a product with growth ambitions.
+author), display name "Thermo — Daily Ritual" (Xcode product/
+target name stays "Thermometer"). It shows today's real outdoor
+temperature via a numeric readout, today's date, and today's
+high/low, plus a choice of six photoreal thermometer-style images
+— Classic, Garden, Galileo, Retro, Dial, and USSR — picked via a
+tap row below the readout or by swiping left/right on the
+thermometer graphic itself, with the choice persisted across
+launches. Five styles are static/decorative photos; Retro is a
+live exception, compositing individual Nixie-tube digit photos to
+show the actual current temperature digit-by-digit. An eye-icon
+toggle hides the header/readout/picker chrome (also persisted) for
+an immersive view where the thermometer graphic expands to fill
+most of the screen. Still one screen, no settings navigation. No
+monetization — it's a personal aesthetic project, not a product
+with growth ambitions.
 
 ## Tech stack
 
-SwiftUI, iOS 17.0+ deployment target. Current temperature and
-today's forecast max/min come from Open-Meteo (free, no API key)
-via `URLSession`; coordinates come from `CoreLocation`
+SwiftUI, iOS 17.0+ deployment target, iPhone-only and
+portrait-only (`TARGETED_DEVICE_FAMILY: "1"` — now formally
+declared in `project.yml`, not just de facto). Current temperature
+and today's forecast max/min come from Open-Meteo (free, no API
+key) via `URLSession`; coordinates come from `CoreLocation`
 (when-in-use permission). No backend or server component. The
 Xcode project is generated via XcodeGen (`ios/project.yml` →
 `ios/Thermometer.xcodeproj`, not hand-maintained — regenerate
-with `xcodegen generate` after editing `project.yml`). As of
-2026-09-15: builds clean for iOS Simulator
-(`xcodebuild ... -sdk iphonesimulator build`) and was manually
-verified running with live weather data; not yet run on a
-physical device (needs the user's own Apple ID/signing team in
-Xcode).
+with `xcodegen generate` after editing `project.yml`). Has a real
+1024×1024 app icon, derived from the Classic thermometer photo.
+As of 2026-09-15: deployed to TestFlight — v1.0 (build 1), live
+via internal TestFlight testing, installed and verified on the
+author's own iPhone.
 
 ## Repo
 

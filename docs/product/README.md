@@ -1,13 +1,13 @@
 # Product
 
-Thermometer shows today's real outdoor temperature as a single
-beautiful animated glass thermometer — liquid rises to the
-current reading with a spring animation, colored on a continuous
-blue → teal → amber → red gradient by temperature, with a glow
-pulse and rising bubbles for a "living" feel. The value is
-purely aesthetic: a small daily ritual of checking the weather,
-not a utility for planning around it — that tension (delight over
-feature count) governs every scope decision.
+Thermometer shows today's real outdoor temperature as one of six
+photoreal thermometer styles the user can pick between (Classic,
+Garden, Galileo, Retro, Dial, USSR) — swipe or tap to switch. Five
+are static reference photos; Retro alone composites live digit
+tubes to show the actual reading. The value is purely aesthetic: a
+small daily ritual of checking the weather, not a utility for
+planning around it — that tension (delight over feature count)
+governs every scope decision.
 
 It replaces the reflex of opening a cluttered weather app just to
 see one number with something calmer and nicer to look at.
@@ -83,8 +83,10 @@ compliance, attribution) live in
   utility with growth ambitions.** No settings *screen* or
   navigation, no history, forecast list, city search, accounts, or
   monetization. This is distinct from "no user-adjustable state at
-  all": one persisted choice exists (thermometer visual style, see
-  [`features/style-choose.md`](features/style-choose.md)), made
+  all": two persisted choices exist — thermometer visual style
+  (see [`features/style-choose.md`](features/style-choose.md)) and
+  the hide-chrome immersive toggle (see
+  [`features/chrome-hide.md`](features/chrome-hide.md)) — both made
   inline on the single screen with no dedicated settings page.
 - **Single current location only**, from `CoreLocation`. No
   manual location override yet — planned for a future settings
